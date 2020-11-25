@@ -6,17 +6,23 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.MalformedURLException;
+import java.io.*;
 import java.net.URL;
+import java.util.Scanner;
 
 public class Login extends JFrame {
+
+    private static Scanner sc;
+    private static int intentos;
+    private static String user, pwd;
 
     private JPanel contentPane;
     private JTextField txtUsername;
     private JTextField txtPass;
     private JTextField txtPassword;
     private JTextField textField_2;
+    private Button button_login;
+    private Button button_create_account;
 
     /**
      * Launch the application.
@@ -130,9 +136,44 @@ public class Login extends JFrame {
         lblNewLabel_5.setBounds(126, 369, 91, 20);
         panel.add(lblNewLabel_5);
 
-        Button button_login = new Button("LOGIN");
+        button_login = new Button("LOGIN");
         button_login.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
+                int nLineas = 0;
+                int i = 0;
+                String[] usuarios = null;
+                String linea;
+                FileReader fr = null;
+
+                try {
+                    sc = new Scanner(new File("D:\\Dropbox\\Dropbox\\Tarea de UNLZ - Universidad de Lomas de Zamora\\Java\\Programming & Jobs\\CallCenter\\ususarios.txt"));
+                    File f = new File("D:\\Dropbox\\Dropbox\\Tarea de UNLZ - Universidad de Lomas de Zamora\\Java\\Programming & Jobs\\CallCenter\\ususarios.txt");
+                    fr = new FileReader(f);
+                    BufferedReader br = new BufferedReader(fr);
+
+                    while ((linea = br.readLine()) != null) {
+                        nLineas++;
+                    }
+
+                    usuarios = new String[nLineas]; // El tamaño del arreglo
+
+                    while (sc.hasNextLine()) {
+                        usuarios[i++] = sc.nextLine();
+                    }
+
+                    intentos++;
+                    user = txtUsername.getText();
+                    pwd = txtPassword.getText();
+                    Seguridad s = new Seguridad();
+                    s.validarUsuario(usuarios, user, pwd, intentos);
+
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
         button_login.setFont(new Font("Calisto MT", Font.BOLD, 14));
@@ -140,7 +181,7 @@ public class Login extends JFrame {
         button_login.setBounds(103, 415, 146, 60);
         panel.add(button_login);
 
-        Button button_create_account = new Button("CREATE ACCOUNT");
+        button_create_account = new Button("CREATE ACCOUNT");
         button_create_account.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
             }
@@ -149,5 +190,65 @@ public class Login extends JFrame {
         button_create_account.setBackground(new Color(102, 204, 204));
         button_create_account.setBounds(263, 415, 141, 60);
         panel.add(button_create_account);
+    }
+
+
+
+
+
+    public JTextField getTxtUsername() {
+        return txtUsername;
+    }
+
+    public void setTxtUsername(JTextField txtUsername) {
+        this.txtUsername = txtUsername;
+    }
+
+    public JTextField getTxtPass() {
+        return txtPass;
+    }
+
+    public void setTxtPass(JTextField txtPass) {
+        this.txtPass = txtPass;
+    }
+
+    public JTextField getTxtPassword() {
+        return txtPassword;
+    }
+
+    public void setTxtPassword(JTextField txtPassword) {
+        this.txtPassword = txtPassword;
+    }
+
+    public JTextField getTextField_2() {
+        return textField_2;
+    }
+
+    public void setTextField_2(JTextField textField_2) {
+        this.textField_2 = textField_2;
+    }
+
+    public Button getButton_login() {
+        return button_login;
+    }
+
+    public void setButton_login(Button button_login) {
+        this.button_login = button_login;
+    }
+
+    public Button getButton_create_account() {
+        return button_create_account;
+    }
+
+    public void setButton_create_account(Button button_create_account) {
+        this.button_create_account = button_create_account;
+    }
+
+    public static int getIntentos() {
+        return intentos;
+    }
+
+    public static void setIntentos(int intentos) {
+        Login.intentos = intentos;
     }
 }
