@@ -1,16 +1,27 @@
-package interfazUX;
+package model;
 
+import controller.Controlador;
+import interfazUX.TableProduct;
 import javax.swing.*;
 import java.io.IOException;
 
-public class Seguridad {
-    Login login = new Login();
+public class ModeladoLogin {
+    Controlador controller = new Controlador();
     String res;
 
-    public Seguridad() throws IOException {
+    public ModeladoLogin() {
     }
 
-    public void validarUsuario(String usuarios[], String user, String pwd, int intentos) {
+    /**
+     * Se crea un constructor donde se analiza toda la información ingresada desde la ventana.
+     * @param usuarios
+     * @param user
+     * @param pwd
+     * @param intentos
+     * @throws IOException
+     */
+    public void validarUsuario(String usuarios[], String user, String pwd, int intentos) throws IOException {
+
         boolean encontrado = false;
 
         for (int i = 0; i < usuarios.length; i++) {
@@ -19,7 +30,10 @@ public class Seguridad {
                 encontrado = true;
                 JOptionPane.showMessageDialog(null, res, "Inicio de Sesion", JOptionPane.INFORMATION_MESSAGE);
                 intentos = 0;
-                Login.setIntentos(intentos);
+                controller.setIntentos(intentos);
+                TableProduct tableProduct = new TableProduct();
+                tableProduct.setVisible(true);
+                tableProduct.setLocationRelativeTo(null);
                 break;
             }
         }

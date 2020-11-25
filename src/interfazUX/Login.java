@@ -1,5 +1,7 @@
 package interfazUX;
 
+import controller.Controlador;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -8,13 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.URL;
-import java.util.Scanner;
 
 public class Login extends JFrame {
 
-    private static Scanner sc;
-    private static int intentos;
-    private static String user, pwd;
 
     private JPanel contentPane;
     private JTextField txtUsername;
@@ -25,7 +23,10 @@ public class Login extends JFrame {
     private Button button_create_account;
 
     /**
-     * Launch the application.
+     * Se estable el main en la ventana principal
+     * Tener presente que los campos de las ventanas tienen Set Tool Tip Text, que ayuda a interpretar para que sirve el campo.
+     *
+     * @param args
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -33,6 +34,9 @@ public class Login extends JFrame {
                 try {
                     Login frame = new Login();
                     frame.setVisible(true);
+                    frame.setLocationRelativeTo(null);
+                    Controlador controller = new Controlador(frame);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -41,7 +45,9 @@ public class Login extends JFrame {
     }
 
     /**
-     * Create the frame.
+     * Se define la ventana y las imagenes con una extensión.
+     *
+     * @throws IOException
      */
     public Login() throws IOException {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -137,45 +143,6 @@ public class Login extends JFrame {
         panel.add(lblNewLabel_5);
 
         button_login = new Button("LOGIN");
-        button_login.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                int nLineas = 0;
-                int i = 0;
-                String[] usuarios = null;
-                String linea;
-                FileReader fr = null;
-
-                try {
-                    sc = new Scanner(new File("D:\\Dropbox\\Dropbox\\Tarea de UNLZ - Universidad de Lomas de Zamora\\Java\\Programming & Jobs\\CallCenter\\ususarios.txt"));
-                    File f = new File("D:\\Dropbox\\Dropbox\\Tarea de UNLZ - Universidad de Lomas de Zamora\\Java\\Programming & Jobs\\CallCenter\\ususarios.txt");
-                    fr = new FileReader(f);
-                    BufferedReader br = new BufferedReader(fr);
-
-                    while ((linea = br.readLine()) != null) {
-                        nLineas++;
-                    }
-
-                    usuarios = new String[nLineas]; // El tamaño del arreglo
-
-                    while (sc.hasNextLine()) {
-                        usuarios[i++] = sc.nextLine();
-                    }
-
-                    intentos++;
-                    user = txtUsername.getText();
-                    pwd = txtPassword.getText();
-                    Seguridad s = new Seguridad();
-                    s.validarUsuario(usuarios, user, pwd, intentos);
-
-
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
         button_login.setFont(new Font("Calisto MT", Font.BOLD, 14));
         button_login.setBackground(new Color(102, 204, 204));
         button_login.setBounds(103, 415, 146, 60);
@@ -191,9 +158,6 @@ public class Login extends JFrame {
         button_create_account.setBounds(263, 415, 141, 60);
         panel.add(button_create_account);
     }
-
-
-
 
 
     public JTextField getTxtUsername() {
@@ -244,11 +208,4 @@ public class Login extends JFrame {
         this.button_create_account = button_create_account;
     }
 
-    public static int getIntentos() {
-        return intentos;
-    }
-
-    public static void setIntentos(int intentos) {
-        Login.intentos = intentos;
-    }
 }
