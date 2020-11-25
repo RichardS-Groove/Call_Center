@@ -79,7 +79,8 @@ public class CreateAccount extends JFrame {
 
         txt_create_Username = new JTextField();
         txt_create_Username.setToolTipText("");
-        txt_create_Username.setText("    Username");
+        txt_create_Username.setText("");
+        txt_create_Username.setToolTipText("Enter your username");
         txt_create_Username.setBounds(145, 140, 259, 47);
         panel.add(txt_create_Username);
         txt_create_Username.setColumns(10);
@@ -121,7 +122,8 @@ public class CreateAccount extends JFrame {
         panel.add(lblNewLabel_3);
 
         txt_create_name = new JTextField();
-        txt_create_name.setText("    Name");
+        txt_create_name.setText("");
+        txt_create_name.setToolTipText("Enter your name");
         txt_create_name.setColumns(10);
         txt_create_name.setBounds(145, 195, 259, 47);
         panel.add(txt_create_name);
@@ -148,7 +150,8 @@ public class CreateAccount extends JFrame {
 
         txt_create_lastname = new JTextField();
         txt_create_lastname.setToolTipText("");
-        txt_create_lastname.setText("    Lastname");
+        txt_create_lastname.setText("");
+        txt_create_lastname.setToolTipText("Enter your lastname");
         txt_create_lastname.setColumns(10);
         txt_create_lastname.setBounds(145, 253, 259, 47);
         panel.add(txt_create_lastname);
@@ -161,13 +164,15 @@ public class CreateAccount extends JFrame {
         panel.add(textField_3);
 
         txt_create_password = new JTextField();
-        txt_create_password.setText("    Password");
+        txt_create_password.setText("");
+        txt_create_password.setToolTipText("Enter your password");
         txt_create_password.setColumns(10);
         txt_create_password.setBounds(145, 311, 259, 47);
         panel.add(txt_create_password);
 
         txtRepeatpassword = new JTextField();
-        txtRepeatpassword.setText("    Repeatpassword");
+        txtRepeatpassword.setText("");
+        txtRepeatpassword.setToolTipText("Repeat your password");
         txtRepeatpassword.setColumns(10);
         txtRepeatpassword.setBounds(145, 366, 259, 47);
         panel.add(txtRepeatpassword);

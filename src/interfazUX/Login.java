@@ -62,7 +62,8 @@ public class Login extends JFrame {
 
         txtUsername = new JTextField();
         txtUsername.setToolTipText("");
-        txtUsername.setText("    Username");
+        txtUsername.setText("");
+        txtUsername.setToolTipText("Enter your username");
         txtUsername.setBounds(145, 254, 259, 47);
         panel.add(txtUsername);
         txtUsername.setColumns(10);
@@ -102,7 +103,8 @@ public class Login extends JFrame {
         panel.add(lblNewLabel_3);
 
         txtPassword = new JTextField();
-        txtPassword.setText("    Password");
+        txtPassword.setText("");
+        txtPassword.setToolTipText("Enter your password");
         txtPassword.setColumns(10);
         txtPassword.setBounds(145, 312, 259, 47);
         panel.add(txtPassword);

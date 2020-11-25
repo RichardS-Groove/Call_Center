@@ -104,31 +104,36 @@ public class TableProduct extends JFrame {
         panel.add(lblNewLabel_2_1_1_1_1);
 
         product_name = new JTextField();
-        product_name.setText("    Name");
+        product_name.setText("");
+        product_name.setToolTipText("Enter your name");
         product_name.setBounds(202, 110, 186, 32);
         panel.add(product_name);
         product_name.setColumns(10);
 
         product_lastname = new JTextField();
-        product_lastname.setText("    Last Name");
+        product_lastname.setText("");
+        product_lastname.setToolTipText("Enter your lastname");
         product_lastname.setColumns(10);
         product_lastname.setBounds(202, 153, 186, 32);
         panel.add(product_lastname);
 
         product_phone = new JTextField();
-        product_phone.setText("    Phone");
+        product_phone.setText("");
+        product_phone.setToolTipText("Enter your Phone");
         product_phone.setColumns(10);
         product_phone.setBounds(202, 196, 186, 32);
         panel.add(product_phone);
 
         product_company = new JTextField();
-        product_company.setText("    Company");
+        product_company.setText("");
+        product_company.setToolTipText("Enter your company");
         product_company.setColumns(10);
         product_company.setBounds(202, 239, 186, 32);
         panel.add(product_company);
 
         product_raeson = new JTextField();
-        product_raeson.setText("    Raeson");
+        product_raeson.setText("");
+        product_raeson.setToolTipText("Enter your raeson");
         product_raeson.setColumns(10);
         product_raeson.setBounds(202, 282, 269, 32);
         panel.add(product_raeson);
@@ -154,6 +159,10 @@ public class TableProduct extends JFrame {
         btnAdd.setBounds(548, 338, 89, 23);
         panel.add(btnAdd);
 
+        JButton btnLoadSession = new JButton("Load Session");
+        btnLoadSession.setBounds(183, 338, 127, 23);
+        panel.add(btnLoadSession);
+
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setBounds(46, 382, 690, 306);
         panel.add(scrollPane);
@@ -167,10 +176,17 @@ public class TableProduct extends JFrame {
                 }
         ));
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        scrollPane.setColumnHeaderView(table);
+        scrollPane.setColumnHeaderView(table); // --> Añadi esto
+        table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        table.setFocusable(false);
+        table.setRowMargin(4);
+        table.getTableHeader().setReorderingAllowed(false);
+        scrollPane.setViewportView(table);
+        if (table.getColumnModel().getColumnCount() > 0) {
+            table.getColumnModel().getColumn(0).setMinWidth(50);
+            table.getColumnModel().getColumn(0).setPreferredWidth(50);
+            table.getColumnModel().getColumn(0).setMaxWidth(3050);
+        }
 
-        JButton btnLoadSession = new JButton("Load Session");
-        btnLoadSession.setBounds(183, 338, 127, 23);
-        panel.add(btnLoadSession);
     }
 }
