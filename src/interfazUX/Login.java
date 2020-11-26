@@ -23,7 +23,7 @@ public class Login extends JFrame {
     private Button button_create_account;
 
     /**
-     * Se estable el main en la ventana principal
+     * Se establece el main en la ventana principal
      * Tener presente que los campos de las ventanas tienen Set Tool Tip Text, que ayuda a interpretar para que sirve el campo.
      *
      * @param args
