@@ -25,7 +25,7 @@ public class ModeladoLogin {
         boolean encontrado = false;
 
         for (int i = 0; i < usuarios.length; i++) {
-            if ((usuarios[i].equalsIgnoreCase(user)) && usuarios[i + 1].equals(pwd)) {
+            if ((usuarios[i].equalsIgnoreCase(user)) && usuarios[i + 3].equals(pwd)) {
                 res = "Bienvenido " + user;
                 encontrado = true;
                 JOptionPane.showMessageDialog(null, res, "Inicio de Sesion", JOptionPane.INFORMATION_MESSAGE);

@@ -1,7 +1,9 @@
 package controller;
 
+import interfazUX.CreateAccount;
 import interfazUX.Login;
 import model.ModeladoLogin;
+import model.ModeloCreateAccount;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -33,8 +35,10 @@ public class Controlador implements ActionListener {
         this.login = login;
         modeladoLogin = new ModeladoLogin();
         login.getButton_login().addActionListener(this);
-//        JOptionPane.showMessageDialog(null, "Pasa");
+        login.getButton_create_account().addActionListener(this);
+
     }
+
 
     /**
      * Se sobreescribe el metodo de la acción.
@@ -43,6 +47,26 @@ public class Controlador implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == login.getButton_login()) {
+            sessionLogin();
+        } else if (e.getSource() == login.getButton_create_account()) {
+            try {
+
+                CreateAccount createAccount = new CreateAccount();
+                createAccount.setVisible(true);
+                createAccount.setLocationRelativeTo(null);
+                ControladorCreateUser controladorCreateUser = new ControladorCreateUser(createAccount);
+                login.dispose();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+
+        }
+
+    }
+
+
+    public void sessionLogin() {
         int nLineas = 0;
         int i = 0;
         String[] usuarios = null;
@@ -50,8 +74,8 @@ public class Controlador implements ActionListener {
         FileReader fr = null;
 
         try {
-            sc = new Scanner(new File("D:\\ususarios.txt")); // En el proyecto esta el TxT, por favor de colocar en el disco D:, si tienes disco C:  la ruta es: C:\\usuarios.txt
-            File f = new File("D:\\ususarios.txt"); // En el proyecto esta el TxT, por favor de colocar en el disco D:, si tienes disco C:  la ruta es: C:\\usuarios.txt
+            sc = new Scanner(new File("user.txt")); // Recordar establecer la ruta de leer el archivo, este txt se crea desde el controlador Create User.
+            File f = new File("user.txt");
             fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
 

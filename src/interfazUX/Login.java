@@ -1,7 +1,5 @@
 package interfazUX;
 
-import controller.Controlador;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -22,13 +20,8 @@ public class Login extends JFrame {
     private Button button_login;
     private Button button_create_account;
 
-    /**
-     * Se establece el main en la ventana principal
-     * Tener presente que los campos de las ventanas tienen Set Tool Tip Text, que ayuda a interpretar para que sirve el campo.
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
+
+   /* public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -42,13 +35,9 @@ public class Login extends JFrame {
                 }
             }
         });
-    }
+    }*/
 
-    /**
-     * Se define la ventana y las imagenes con una extensión.
-     *
-     * @throws IOException
-     */
+
     public Login() throws IOException {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 520, 570);
@@ -114,7 +103,7 @@ public class Login extends JFrame {
         lblNewLabel_3.setBounds(103, 311, 43, 47);
         panel.add(lblNewLabel_3);
 
-        txtPassword = new JTextField();
+        txtPassword = new JPasswordField();
         txtPassword.setText("");
         txtPassword.setToolTipText("Enter your password");
         txtPassword.setColumns(10);
@@ -149,10 +138,6 @@ public class Login extends JFrame {
         panel.add(button_login);
 
         button_create_account = new Button("CREATE ACCOUNT");
-        button_create_account.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-            }
-        });
         button_create_account.setFont(new Font("Calisto MT", Font.BOLD, 14));
         button_create_account.setBackground(new Color(102, 204, 204));
         button_create_account.setBounds(263, 415, 141, 60);

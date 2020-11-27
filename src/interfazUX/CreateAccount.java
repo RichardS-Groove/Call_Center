@@ -6,14 +6,10 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Objects;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class CreateAccount extends JFrame {
@@ -34,11 +30,12 @@ public class CreateAccount extends JFrame {
     private JTextField textField;
     private JTextField textField_1;
     private JTextField textField_2;
+    private Button button_createuser;
+    private Button button_cancel;
 
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
+// No usar esté main, solo es para ver la vista de la ventana
+ /*   public static void main(String[] args) {
+
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -50,10 +47,8 @@ public class CreateAccount extends JFrame {
             }
         });
     }
+*/
 
-    /**
-     * Create the frame.
-     */
     public CreateAccount() throws IOException {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 520, 570);
@@ -128,26 +123,6 @@ public class CreateAccount extends JFrame {
         txt_create_name.setBounds(145, 195, 259, 47);
         panel.add(txt_create_name);
 
-        Button button_createuser = new Button("CREATE USER");
-        button_createuser.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-            }
-        });
-        button_createuser.setFont(new Font("Calisto MT", Font.BOLD, 14));
-        button_createuser.setBackground(new Color(102, 204, 204));
-        button_createuser.setBounds(103, 429, 146, 60);
-        panel.add(button_createuser);
-
-        Button button_cancel = new Button("CANCEL");
-        button_cancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-            }
-        });
-        button_cancel.setFont(new Font("Calisto MT", Font.BOLD, 14));
-        button_cancel.setBackground(new Color(102, 204, 204));
-        button_cancel.setBounds(263, 429, 141, 60);
-        panel.add(button_cancel);
-
         txt_create_lastname = new JTextField();
         txt_create_lastname.setToolTipText("");
         txt_create_lastname.setText("");
@@ -163,14 +138,14 @@ public class CreateAccount extends JFrame {
         textField_3.setBounds(103, 311, 43, 47);
         panel.add(textField_3);
 
-        txt_create_password = new JTextField();
+        txt_create_password = new JPasswordField();
         txt_create_password.setText("");
         txt_create_password.setToolTipText("Enter your password");
         txt_create_password.setColumns(10);
         txt_create_password.setBounds(145, 311, 259, 47);
         panel.add(txt_create_password);
 
-        txtRepeatpassword = new JTextField();
+        txtRepeatpassword = new JPasswordField();
         txtRepeatpassword.setText("");
         txtRepeatpassword.setToolTipText("Repeat your password");
         txtRepeatpassword.setColumns(10);
@@ -229,5 +204,87 @@ public class CreateAccount extends JFrame {
         textField_2.setColumns(10);
         textField_2.setBounds(103, 366, 43, 47);
         panel.add(textField_2);
+
+        button_createuser = new Button("CREATE USER");
+        button_createuser.setFont(new Font("Calisto MT", Font.BOLD, 14));
+        button_createuser.setBackground(new Color(102, 204, 204));
+        button_createuser.setBounds(103, 429, 146, 60);
+        panel.add(button_createuser);
+
+        button_cancel = new Button("CANCEL");
+        button_cancel.setFont(new Font("Calisto MT", Font.BOLD, 14));
+        button_cancel.setBackground(new Color(102, 204, 204));
+        button_cancel.setBounds(263, 429, 141, 60);
+        panel.add(button_cancel);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CreateAccount that = (CreateAccount) o;
+        return Objects.equals(txt_create_password, that.txt_create_password) &&
+                Objects.equals(txtRepeatpassword, that.txtRepeatpassword);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(txt_create_password, txtRepeatpassword);
+    }
+
+    public JTextField getTxt_create_Username() {
+        return txt_create_Username;
+    }
+
+    public void setTxt_create_Username(JTextField txt_create_Username) {
+        this.txt_create_Username = txt_create_Username;
+    }
+
+    public JTextField getTxt_create_name() {
+        return txt_create_name;
+    }
+
+    public void setTxt_create_name(JTextField txt_create_name) {
+        this.txt_create_name = txt_create_name;
+    }
+
+    public JTextField getTxt_create_lastname() {
+        return txt_create_lastname;
+    }
+
+    public void setTxt_create_lastname(JTextField txt_create_lastname) {
+        this.txt_create_lastname = txt_create_lastname;
+    }
+
+    public JTextField getTxt_create_password() {
+        return txt_create_password;
+    }
+
+    public void setTxt_create_password(JTextField txt_create_password) {
+        this.txt_create_password = txt_create_password;
+    }
+
+    public JTextField getTxtRepeatpassword() {
+        return txtRepeatpassword;
+    }
+
+    public void setTxtRepeatpassword(JTextField txtRepeatpassword) {
+        this.txtRepeatpassword = txtRepeatpassword;
+    }
+
+    public Button getButton_createuser() {
+        return button_createuser;
+    }
+
+    public void setButton_createuser(Button button_createuser) {
+        this.button_createuser = button_createuser;
+    }
+
+    public Button getButton_cancel() {
+        return button_cancel;
+    }
+
+    public void setButton_cancel(Button button_cancel) {
+        this.button_cancel = button_cancel;
     }
 }

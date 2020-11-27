@@ -27,10 +27,8 @@ public class TableProduct extends JFrame {
     private JTextField product_raeson;
     private JTable table;
 
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
+
+   /* public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -41,11 +39,8 @@ public class TableProduct extends JFrame {
                 }
             }
         });
-    }
+    }*/
 
-    /**
-     * Create the frame.
-     */
     public TableProduct() throws IOException {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 760);
